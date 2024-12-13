@@ -11,7 +11,7 @@ export interface valve {
 
  export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://192.168.1.34:3000'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'manuel zafra api international'}),
     tagTypes: ['Group'],
     endpoints: (builder) => ({
         getItems: builder.query({

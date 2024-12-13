@@ -9,7 +9,9 @@ export default function ValveComponent({ name, values, onUpdate }: { name: strin
   const dispatch = useDispatch();
   const { groups } = useSelector((state: RootState) => state.group);
   
-
+  // La api esta hecha por Manuel Zafra y tengo que mapear todos los grupos para cambiar el estado de la valvula
+  // Esto se debe a que le tengo que pasar todos los grupos a la api
+  // No he cenado tengo hambre
   const handleSwitchToggle = (itemName: string, currentState: boolean) => {
     const newGroups = groups.map(group => {
       if (group.name === name) {

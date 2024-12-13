@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { FlatList, View, ActivityIndicator } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetItemsQuery, useRefreshItemsMutation } from '../api/api'; 
 import { setGroups } from '../slices/groupSlice';
@@ -11,7 +11,7 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
   const { groups } = useSelector((state : RootState) => state.group);
   const { data, isLoading, isError } = useGetItemsQuery({});
-  const [updateItems, { isLoading : isUpdating }] = useRefreshItemsMutation({});
+  const [updateItems] = useRefreshItemsMutation({});
 
  
   React.useEffect(() => {
