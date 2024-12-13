@@ -1,13 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "../api/api";
+import { groupSlice } from "../slices/groupSlice";
 const store = configureStore({
     reducer: {
-        [api.reducerPath]: api.reducer
-        
+        [api.reducerPath]: api.reducer,
+        [groupSlice.name]: groupSlice.reducer
     },
-    
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 });
 
-// debes irte a usage with typescript y debes meter aqui los export types, ademas 
-// de ello, en el combine reducers mete entre corchetes lo del nombre y todo [nombrePath.pollas] : pollas.reducer o slie no recuerdo ya
-// por que si no te petardeará el middleware cuando lo intentes meter en el concat
+export default store;   
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+

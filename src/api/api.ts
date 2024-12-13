@@ -6,24 +6,24 @@ export interface group {
 }
 export interface valve {
     name: string,
-    status: boolean
+    state: boolean
 }
 
  export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({baseUrl: 'manuel zafra api'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'http://192.168.1.34:3000'}),
+    tagTypes: ['Group'],
     endpoints: (builder) => ({
         getItems: builder.query({
             query: () => '/items',
             transformResponse: transformResponseCustom,
-            
+            providesTags: ['Group'],
         }),
         refreshItems: builder.mutation({   
-            query: (newItem: group) => ({
+            query: (newItems: group[]) => ({
                 url: '/items',
                 method: 'POST',
-                body: newItem,
-            
+                body: newItems,
             }),
             transformResponse: transformResponseCustom,
 
